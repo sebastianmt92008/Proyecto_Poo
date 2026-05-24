@@ -43,4 +43,13 @@ public class Arquero extends Jugador{
     public void setPosicion(String posicion) {
         this.posicion = posicion;
     }
+
+    @Override
+    public String actuarEnCampo() {
+        return getNombre() + " se lanza y realiza una atajada. Total atajadas: " + atajadas + ".";
+    }
+
+    public void mostrarInfo() {
+        System.out.println("Arquero: " + getNombre() + " | Atajadas: " + atajadas + " | Reflejos: " + reflejos + " | Energia: " + getEnergia());
+    }
 }

@@ -43,4 +43,12 @@ public class Jugador {
     public void setEnergia(int energia) {
         this.energia = energia;
     }
+
+    public String actuarEnCampo() {
+        return getNombre() + " está en el campo.";
+    }
+
+    public void mostrarInfo() {
+        System.out.println("Nombre: " + nombre + " | Camiseta: " + numeroCamiseta + " | Energia: " + energia);
+    }
 }

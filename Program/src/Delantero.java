@@ -46,4 +46,13 @@ public class Delantero extends Jugador {
     public void setVelocidadDisparo(int velocidadDisparo) {
         this.velocidadDisparo = velocidadDisparo;
     }
+
+    @Override
+    public String actuarEnCampo() {
+        return getNombre() + " corre hacia el arco y dispara con precisión de " + precision + ".";
+    }
+
+    public void mostrarInfo() {
+        System.out.println("Delantero: " + getNombre() + " | Goles: " + golesAnotados + " | Precision: " + precision + " | Velocidad: " + velocidadDisparo + " | Energia: " + getEnergia());
+    }
 }
