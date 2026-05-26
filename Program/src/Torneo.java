@@ -76,35 +76,4 @@ public class Torneo {
 
         return equipos;
     }
-
-    public static ArrayList<Equipo> MostrarJugadores(ArrayList<Equipo> equipos, String nombreEquipo){
-        boolean encontrado = false;
-
-        for(int i=0; i<equipos.size(); i++){
-            if(equipos.get(i).getNombre().equalsIgnoreCase(nombreEquipo)){
-                encontrado = true;
-                System.out.println("=== JUGADORES DE " + equipos.get(i).getNombre().toUpperCase() + " ===");
-
-                ArrayList<Jugador> jugadores = equipos.get(i).getJugadores();
-                for(int j = 0; j < jugadores.size(); j++){
-                    System.out.println((j+1) + ". " + jugadores.get(j).getNombre()
-                            + " | Edad: " + jugadores.get(j).getEdad());
-                }
-                break;
-
-            }
-
-            if(!encontrado){
-                System.out.println("Equipo no encontrado");
-            }
-
-
-        }
-
-
-
-
-        return equipos;
-
-    }
 }
