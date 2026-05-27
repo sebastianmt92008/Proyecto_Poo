@@ -14,19 +14,15 @@ public class Main {
 
         System.out.print("Ingrese el numero del equipo con el que quiere participar: ");
         int opcionJugador= 0;
-        boolean valido = false;
-        while (!valido){
-            if (Sc.hasNextInt()){
-                opcionJugador = Sc.nextInt();
-                if (opcionJugador >=1 && opcionJugador <= equipos.size()){
-                    valido = true;
-                } else {
-                    System.out.println("Opcion invalida. Eliga un numero entre 1 y 8: ");
-                }
-            } else {
-                System.out.println("Opcion invalida. No ingrese letras, ingrese números entre 1 y 8");
+        while (opcionJugador < 1 || opcionJugador > equipos.size()) {
+            System.out.print("Opcion invalida. Ingrese entre 1 y 8: ");
+
+            while (!Sc.hasNextInt()) {
+                System.out.print("Opcion invalida. No ingrese letras, ingrese entre 1 y 8: ");
                 Sc.next();
             }
+
+            opcionJugador = Sc.nextInt(); // Ahora sí lee de forma segura
         }
 
 
@@ -75,20 +71,16 @@ public class Main {
                         jugadoresPartido.get(i).mostrarInfo();
                     }
                     int jugadorPartido= 0;
-                    boolean validoPartido = false;
 
-                    while (!validoPartido){
-                        if (Sc.hasNextInt()){
-                            jugadorPartido = Sc.nextInt();
-                            if (jugadorPartido >=1 && jugadorPartido <= jugadoresPartido.size()){
-                                validoPartido = true;
-                            } else {
-                                System.out.println("Opcion invalida. Eliga un numero entre 1 y 5: ");
-                            }
-                        } else {
-                            System.out.println("Opcion invalida. No ingrese letras, ingrese números entre 1 y 8: ");
+                    while (jugadorPartido < 1 || jugadorPartido > jugadoresPartido.size()) {
+                        System.out.print("Opcion invalida. Ingrese entre 1 y 5: ");
+
+                        while (!Sc.hasNextInt()) {
+                            System.out.print("Opcion invalida. No ingrese letras, ingrese entre 1 y 5: ");
                             Sc.next();
                         }
+
+                        jugadorPartido = Sc.nextInt();
                     }
 
                     Jugador jugadorElegido = jugadoresPartido.get(jugadorPartido - 1);
@@ -128,20 +120,15 @@ public class Main {
                     System.out.print("Ingrese el numero del nuevo equipo: ");
 
                     int nuevaOpcion= 0;
-                    boolean validoNuevaOpcion = false;
+                    while (nuevaOpcion < 1 || nuevaOpcion > equipos.size()) {
+                        System.out.print("Opcion invalida. Ingrese entre 1 y 8: ");
 
-                    while (!validoNuevaOpcion){
-                        if (Sc.hasNextInt()){
-                            nuevaOpcion = Sc.nextInt();
-                            if (nuevaOpcion >=1 && nuevaOpcion <= equipos.size()){
-                                validoNuevaOpcion = true;
-                            } else {
-                                System.out.println("Opcion invalida. Eliga un numero entre 1 y 8: ");
-                            }
-                        } else {
-                            System.out.println("Opcion invalida. No ingrese letras, ingrese números entre 1 y 8: ");
+                        while (!Sc.hasNextInt()) {
+                            System.out.print("Opcion invalida. No ingrese letras, ingrese entre 1 y 8: ");
                             Sc.next();
                         }
+
+                        nuevaOpcion = Sc.nextInt();
                     }
                     equipoJugador = equipos.get(nuevaOpcion - 1);
                     System.out.println("Ahora juegas con: " + equipoJugador.getNombre());
