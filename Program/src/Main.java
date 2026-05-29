@@ -14,6 +14,12 @@ public class Main {
 
         System.out.print("Ingrese el numero del equipo con el que quiere participar: ");
         int opcionJugador= 0;
+        while (!Sc.hasNextInt()) {
+            System.out.print("Opcion invalida. No ingrese letras, ingrese entre 1 y 8: ");
+            Sc.next();
+        }
+        opcionJugador = Sc.nextInt();
+
         while (opcionJugador < 1 || opcionJugador > equipos.size()) {
             System.out.print("Opcion invalida. Ingrese entre 1 y 8: ");
 
@@ -22,12 +28,12 @@ public class Main {
                 Sc.next();
             }
 
-            opcionJugador = Sc.nextInt(); // Ahora sí lee de forma segura
+            opcionJugador = Sc.nextInt();
         }
 
 
         Equipo equipoJugador = equipos.get(opcionJugador - 1);
-        System.out.println("Elegiste: " + equipoJugador.getNombre());
+        System.out.println("\nElegiste: " + equipoJugador.getNombre());
 
 
         int option = 0;
@@ -42,9 +48,23 @@ public class Main {
             System.out.println("5. Cambiar equipo");
             System.out.println("6. Salir");
             System.out.print("Seleccione una opción: ");
+
+            while (!Sc.hasNextInt()) {
+                System.out.print("Opcion invalida. No ingrese letras, ingrese entre 1 y 6: ");
+                Sc.next();
+            }
             option = Sc.nextInt();
 
+            while (option < 1 || option > 6) {
+                System.out.print("Opcion invalida. Ingrese entre 1 y 6: ");
 
+                while (!Sc.hasNextInt()) {
+                    System.out.print("Opcion invalida. No ingrese letras, ingrese entre 1 y 6: ");
+                    Sc.next();
+                }
+
+                option = Sc.nextInt();
+            }
 
             switch (option){
 
@@ -62,32 +82,19 @@ public class Main {
 
                 case 2:
 
-                    System.out.println("\n === JUGAR PARTIDO ===");
-                    System.out.println("Su equipo actual es: " + equipoJugador.getNombre());
-                    System.out.println("Seleccione el jugador con el que quiere jugar: ");
-                    ArrayList<Jugador> jugadoresPartido = equipoJugador.getJugadores();
-                    for (int i = 0; i < jugadoresPartido.size(); i++) {
-                        System.out.print((i + 1) + ". ");
-                        jugadoresPartido.get(i).mostrarInfo();
-                    }
-                    int jugadorPartido= 0;
+                    Equipo equipoRival;
 
-                    while (jugadorPartido < 1 || jugadorPartido > jugadoresPartido.size()) {
-                        System.out.print("Opcion invalida. Ingrese entre 1 y 5: ");
+                    do {
+                        int rivalRandom = (int)(Math.random() * equipos.size());
+                        equipoRival = equipos.get(rivalRandom);
 
-                        while (!Sc.hasNextInt()) {
-                            System.out.print("Opcion invalida. No ingrese letras, ingrese entre 1 y 5: ");
-                            Sc.next();
-                        }
+                    } while (equipoRival == equipoJugador);
 
-                        jugadorPartido = Sc.nextInt();
-                    }
+                    System.out.println("\nSu rival sera: " + equipoRival.getNombre());
 
-                    Jugador jugadorElegido = jugadoresPartido.get(jugadorPartido - 1);
-                    System.out.println("Eligio al Jugador: ");
-                    jugadorElegido.mostrarInfo();
-
-
+                    //iniciar partido
+                    Partido partido = new Partido(equipoJugador, equipoRival);
+                    partido.iniciarPartido();
 
                     break;
 
@@ -120,6 +127,11 @@ public class Main {
                     System.out.print("Ingrese el numero del nuevo equipo: ");
 
                     int nuevaOpcion= 0;
+                    while (!Sc.hasNextInt()) {
+                        System.out.print("Opcion invalida. No ingrese letras, ingrese entre 1 y 8: ");
+                        Sc.next();
+                    }
+                    nuevaOpcion = Sc.nextInt();
                     while (nuevaOpcion < 1 || nuevaOpcion > equipos.size()) {
                         System.out.print("Opcion invalida. Ingrese entre 1 y 8: ");
 

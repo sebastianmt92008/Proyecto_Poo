@@ -3,6 +3,9 @@ public class Jugador {
     private int edad;
     private int numeroCamiseta;
     protected int energia; // protected: permite que las clases hijas lo modifiquen
+    private int golesMarcados;
+    private int disparosRealizados;
+    private int partidosJugados;
 
     // agregamos el constructor
     public Jugador(String nombre, int edad, int numeroCamiseta, int energia) {
@@ -46,6 +49,30 @@ public class Jugador {
 
     public String actuarEnCampo() {
         return getNombre() + " está en el campo.";
+    }
+
+    public int getGolesMarcados() {
+        return golesMarcados;
+    }
+
+    public void setGolesMarcados(int golesMarcados) {
+        this.golesMarcados = golesMarcados;
+    }
+
+    public int getDisparosRealizados() {
+        return disparosRealizados;
+    }
+
+    public void setDisparosRealizados(int disparosRealizados) {
+        this.disparosRealizados = disparosRealizados;
+    }
+
+    public int getPartidosJugados() {
+        return partidosJugados;
+    }
+
+    public void setPartidosJugados(int partidosJugados) {
+        this.partidosJugados = partidosJugados;
     }
 
     public void mostrarInfo() {
