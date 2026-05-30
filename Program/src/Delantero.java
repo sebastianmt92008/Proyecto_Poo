@@ -52,6 +52,7 @@ public class Delantero extends Jugador {
         return getNombre() + " corre hacia el arco y dispara con precisión de " + precision + ".";
     }
 
+    @Override
     public void mostrarInfo() {
         System.out.println("Delantero: " + getNombre() + " | Goles: " + golesAnotados + " | Precision: " + precision + " | Velocidad: " + velocidadDisparo + " | Energia: " + getEnergia());
     }

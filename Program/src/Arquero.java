@@ -49,6 +49,7 @@ public class Arquero extends Jugador{
         return getNombre() + " se lanza y realiza una atajada. Total atajadas: " + atajadas + ".";
     }
 
+    @Override
     public void mostrarInfo() {
         System.out.println("Arquero: " + getNombre() + " | Atajadas: " + atajadas + " | Reflejos: " + reflejos + " | Energia: " + getEnergia());
     }
