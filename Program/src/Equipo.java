@@ -5,13 +5,19 @@ public class Equipo {
     private String ciudad;
     private int puntos;
     private int partidosGanados;
+    private int partidosPerdidos;
+    private int golesFavor;
+    private int golesContra;
     private ArrayList<Jugador> jugadores;
 
-    public Equipo(String nombre, String ciudad, int puntos, int partidosGanados, ArrayList<Jugador> jugadores) {
+    public Equipo(String nombre, String ciudad, int puntos, int partidosGanados, int partidosPerdidos, int golesFavor, int golesContra,  ArrayList<Jugador> jugadores) {
         this.nombre = nombre;
         this.ciudad = ciudad;
         this.puntos = puntos;
         this.partidosGanados = partidosGanados;
+        this.partidosPerdidos = partidosPerdidos;
+        this.golesFavor = golesFavor;
+        this.golesContra = golesContra;
         this.jugadores = jugadores;
     }
 
@@ -47,11 +53,21 @@ public class Equipo {
         this.partidosGanados = partidosGanados;
     }
 
+    public int getPartidosPerdidos() { return partidosPerdidos;}
+
+    public void setPartidosPerdidos(int partidosPerdidos) { this.partidosPerdidos = partidosPerdidos; }
+
+    public int getGolesFavor() { return golesFavor; }
+
+    public void setGolesFavor(int golesFavor) { this.golesFavor = golesFavor; }
+
+    public int getGolesContra() { return golesContra; }
+
+    public void setGolesContra(int golesContra) { this.golesContra = golesContra; }
+
     public ArrayList<Jugador> getJugadores() {
         return jugadores;
     }
 
-    public void setJugadores(ArrayList<Jugador> jugadores) {
-        this.jugadores = jugadores;
-    }
+    public void setJugadores(ArrayList<Jugador> jugadores) { this.jugadores = jugadores; }
 }

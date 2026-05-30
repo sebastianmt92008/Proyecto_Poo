@@ -42,9 +42,9 @@ public class Partido {
 
             jugarOcasion();
 
-            //mostrarMarcador();
+            mostrarMarcador();
         }
-        //mostrarResultadoFinal();
+        mostrarResultadoFinal();
 
         //actualizarTabla();
     }
@@ -86,6 +86,7 @@ public class Partido {
             opcionJugador = Sc.nextInt();
         }
 
+        // se pide escoger otro jugador
         Jugador jugadorElegido = jugadores.get(opcionJugador - 1);
 
         System.out.println("Eligio al Jugador: ");
@@ -116,9 +117,15 @@ public class Partido {
 
         System.out.print("\nSelecciona dónde disparar: ");
 
-        int zonaDisparo = Sc.nextInt();
+        int zonaDisparo =0;
 
         //validar
+        while (!Sc.hasNextInt()) {
+
+            System.out.print("Opcion invalida. No ingrese letras, ingrese entre 1 y 5: ");
+            Sc.next();
+        }
+        zonaDisparo = Sc.nextInt();
         while (zonaDisparo < 1 || zonaDisparo > 5) {
 
             System.out.print("Opcion invalida. Ingrese entre 1 y 5: ");
@@ -131,6 +138,27 @@ public class Partido {
 
             zonaDisparo = Sc.nextInt();
         }
+        boolean gol = calcularGol(jugador);
+
+        if (gol) {
+
+            golesUsuario++;
+
+            System.out.println("\nGOOOOOOOOOOL!!!");
+
+            System.out.println(jugador.getNombre() + " marca para " + equipoUsuario.getNombre());
+
+            jugador.setGolesMarcados(jugador.getGolesMarcados() + 1);
+
+        } else {
+
+            System.out.println("\nFALLASTE LA OCASIÓN");
+            System.out.println("El rival aprovecha el contraataque...");
+            golesRival++;
+            System.out.println("GOL DE " + equipoRival.getNombre());
+        }
+
+        System.out.println("\nEnergía restante de " + jugador.getNombre() + ": " + jugador.getEnergia());
     }
     //crear el metodo de las opciones de disparo
     public void mostrarOpcionesDisparo() {
@@ -142,5 +170,54 @@ public class Partido {
         System.out.println("3. Centro");
         System.out.println("4. Esquina inferior izquierda");
         System.out.println("5. Esquina inferior derecha");
+    }
+
+    // crear metodo de calcular gol
+    public boolean calcularGol(Jugador jugador) {
+        int precision = 15;
+
+        if (jugador instanceof Delantero) {
+            Delantero delantero = (Delantero) jugador;
+            precision = delantero.getPrecision();
+        }
+
+        int probabilidadGol = precision;
+
+        int intento = random.nextInt(100) + 1;
+
+        return intento <= probabilidadGol;
+    }
+
+    public void mostrarMarcador() {
+
+        System.out.println("\n=================================");
+
+        System.out.println(equipoUsuario.getNombre() + " " + golesUsuario + " - " + golesRival + " " + equipoRival.getNombre());
+
+        System.out.println("=================================");
+    }
+
+    //crear metodo para mostrar el resultado final del partido
+    public void mostrarResultadoFinal() {
+
+        System.out.println("\n=================================");
+        System.out.println("        FINAL DEL PARTIDO");
+        System.out.println("=================================");
+
+        mostrarMarcador();
+
+        if (golesUsuario > golesRival) {
+            System.out.println("\nGANASTE EL PARTIDO!!!");
+
+        } else if (golesUsuario < golesRival) {
+            System.out.println("\nPERDISTE EL PARTIDO");
+
+        } else {
+            System.out.println("\nEMPATE");
+        }
+    }
+
+    public void actualizarTabla() {
+
     }
 }
