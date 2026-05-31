@@ -9,6 +9,7 @@ public class Equipo {
     private int golesFavor;
     private int golesContra;
     private ArrayList<Jugador> jugadores;
+    private int partidosJugados = 0;
 
     public Equipo(String nombre, String ciudad, int puntos, int partidosGanados, int partidosPerdidos, int golesFavor, int golesContra,  ArrayList<Jugador> jugadores) {
         this.nombre = nombre;
@@ -70,6 +71,14 @@ public class Equipo {
     }
 
     public void setJugadores(ArrayList<Jugador> jugadores) { this.jugadores = jugadores; }
+
+    public int getPartidosJugados() {
+        return partidosJugados;
+    }
+
+    public void setPartidosJugados(int partidosJugados) {
+        this.partidosJugados = partidosJugados;
+    }
 
 
     public void mostrarEstadisticasJugadores() {

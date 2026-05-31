@@ -82,20 +82,31 @@ public class Main {
 
                 case 2:
 
-                    //COREGIR PUES REPITE PARTIDOS
                     Equipo equipoRival;
 
                     do {
                         int rivalRandom = (int)(Math.random() * equipos.size());
                         equipoRival = equipos.get(rivalRandom);
 
-                    } while (equipoRival == equipoJugador);
+                    } while (equipoRival == equipoJugador || equipoRival.getPartidosJugados() > 0);
 
                     System.out.println("\nSu rival sera: " + equipoRival.getNombre());
 
                     //iniciar partido
                     Partido partido = new Partido(equipoJugador, equipoRival);
                     partido.iniciarPartido();
+
+                    int partidosTotalesUsuario = equipos.size() - 1;
+                    if (equipoJugador.getPartidosJugados() == partidosTotalesUsuario) {
+                        System.out.println("\n=============================================");
+                        System.out.println("¡HAZ JUGADO TODOS TUS PARTIDOS! EL TORNEO FINALIZÓ");
+                        System.out.println("=============================================");
+
+                        torneo.mostrarTabla(equipos);
+
+                        System.out.println("\nGracias por participar en la liga.");
+                        System.exit(0); //Le dice al sistema que finalice el programa, el 0 significa que todo salio bien.
+                    }
 
                     break;
 

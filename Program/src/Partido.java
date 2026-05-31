@@ -224,6 +224,7 @@ public class Partido {
         equipoUsuario.setGolesContra(equipoUsuario.getGolesContra() + golesRival);
         equipoRival.setGolesFavor(equipoRival.getGolesFavor() + golesRival);
         equipoRival.setGolesContra(equipoRival.getGolesContra() + golesUsuario);
+        equipoUsuario.setPartidosJugados(equipoUsuario.getPartidosJugados() + 1);
 
         // victoria del usuario
         if (golesUsuario > golesRival) {
@@ -246,6 +247,7 @@ public class Partido {
 
             equipoUsuario.setPuntos(equipoUsuario.getPuntos() + 1);
             equipoRival.setPuntos(equipoRival.getPuntos() + 1);
+
         }
     }
 }
