@@ -46,7 +46,7 @@ public class Partido {
         }
         mostrarResultadoFinal();
 
-        //actualizarTabla();
+        actualizarTabla();
     }
 
     public void jugarOcasion() {
@@ -219,5 +219,33 @@ public class Partido {
 
     public void actualizarTabla() {
 
+        // goles
+        equipoUsuario.setGolesFavor(equipoUsuario.getGolesFavor() + golesUsuario);
+        equipoUsuario.setGolesContra(equipoUsuario.getGolesContra() + golesRival);
+        equipoRival.setGolesFavor(equipoRival.getGolesFavor() + golesRival);
+        equipoRival.setGolesContra(equipoRival.getGolesContra() + golesUsuario);
+
+        // victoria del usuario
+        if (golesUsuario > golesRival) {
+
+            equipoUsuario.setPuntos(equipoUsuario.getPuntos() + 3);
+            equipoUsuario.setPartidosGanados(equipoUsuario.getPartidosGanados() + 1);
+            equipoRival.setPartidosPerdidos(equipoRival.getPartidosPerdidos() + 1);
+        }
+
+        // victoria rival
+        else if (golesRival > golesUsuario) {
+
+            equipoRival.setPuntos(equipoRival.getPuntos() + 3);
+            equipoRival.setPartidosGanados(equipoRival.getPartidosGanados() + 1);
+            equipoUsuario.setPartidosPerdidos(equipoUsuario.getPartidosPerdidos() + 1);
+        }
+
+        // empate
+        else {
+
+            equipoUsuario.setPuntos(equipoUsuario.getPuntos() + 1);
+            equipoRival.setPuntos(equipoRival.getPuntos() + 1);
+        }
     }
 }

@@ -82,6 +82,7 @@ public class Main {
 
                 case 2:
 
+                    //COREGIR PUES REPITE PARTIDOS
                     Equipo equipoRival;
 
                     do {
@@ -102,7 +103,7 @@ public class Main {
 
                 case 3:
 
-
+                    torneo.mostrarTabla(equipos);
 
                     break;
 
@@ -112,10 +113,9 @@ public class Main {
 
                 case 4:
 
-
-
-
+                    equipoJugador.mostrarEstadisticasJugadores();
                     break;
+
 
                 case 5:
 

@@ -76,4 +76,15 @@ public class Torneo {
 
         return equipos;
     }
+
+    public void mostrarTabla(ArrayList<Equipo> equipos) {
+
+        System.out.println("\n=== TABLA DE POSICIONES ===");
+
+        for (int i = 0; i < equipos.size(); i++) {
+
+            Equipo e = equipos.get(i);
+            System.out.println((i + 1) + ". " + e.getNombre() + " | Pts: " + e.getPuntos() + " | GF: " + e.getGolesFavor() + " | GC: " + e.getGolesContra());
+        }
+    }
 }

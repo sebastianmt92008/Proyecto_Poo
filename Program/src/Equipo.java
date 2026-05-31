@@ -70,4 +70,22 @@ public class Equipo {
     }
 
     public void setJugadores(ArrayList<Jugador> jugadores) { this.jugadores = jugadores; }
+
+
+    public void mostrarEstadisticasJugadores() {
+
+        System.out.println("\n=== ESTADISTICAS DE JUGADORES ===");
+
+        for (int i = 0; i < jugadores.size(); i++) {
+
+            Jugador j = jugadores.get(i);
+            System.out.println("\nJugador: " + j.getNombre());
+
+            System.out.println("Goles: " + j.getGolesMarcados());
+
+            System.out.println("Disparos: " + j.getDisparosRealizados());
+
+            System.out.println("Energia: " + j.getEnergia());
+        }
+    }
 }
